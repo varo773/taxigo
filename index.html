@@ -1,52 +1,1075 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ku" dir="rtl">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="TaxiGo - گەشتێکی خێرا و ئاسان">
-<title>TaxiGo | تاکسی</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>TaxiGo | تاکسی</title>
+
+  <meta
+    name="description"
+    content="TaxiGo - ئەپی زیرەکی بۆ داواکاری تاکسی و بەڕێوەبردنی گەشت"
+  >
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      background: #050607;
+      color: #ffffff;
+      line-height: 1.8;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      background: rgba(5, 6, 7, 0.90);
+
+      backdrop-filter: blur(15px);
+
+      border-bottom:
+        1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-container {
+      max-width: 1150px;
+      margin: auto;
+
+      padding: 16px 25px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      font-size: 25px;
+      font-weight: bold;
+
+      color: #ffbd18;
+    }
+
+    .logo-icon {
+      width: 43px;
+      height: 43px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ffbd18,
+          #ff8a00
+        );
+
+      color: #111;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+
+      color: #d1d5db;
+    }
+
+    .nav-links a {
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #ffbd18;
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 88vh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      padding: 80px 20px;
+
+      background:
+        radial-gradient(
+          circle at 50% 20%,
+          rgba(255,189,24,0.20),
+          transparent 40%
+        );
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .badge {
+      display: inline-block;
+
+      padding: 7px 18px;
+      margin-bottom: 25px;
+
+      border-radius: 50px;
+
+      color: #ffd86a;
+
+      background:
+        rgba(255,189,24,0.10);
+
+      border:
+        1px solid rgba(255,189,24,0.25);
+    }
+
+    .hero h1 {
+      font-size: clamp(55px, 9vw, 100px);
+
+      line-height: 1;
+
+      margin-bottom: 20px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ffffff,
+          #ffbd18,
+          #ff8a00
+        );
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero h2 {
+      font-size: clamp(22px, 4vw, 35px);
+
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 700px;
+
+      margin: auto;
+
+      color: #9ca3af;
+
+      font-size: 18px;
+    }
+
+
+    /* =========================
+       BUTTONS
+    ========================= */
+
+    .buttons {
+      margin-top: 35px;
+
+      display: flex;
+
+      justify-content: center;
+
+      gap: 15px;
+
+      flex-wrap: wrap;
+    }
+
+    .download-btn {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 10px;
+
+      padding: 15px 30px;
+
+      border-radius: 15px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ffbd18,
+          #ff9d00
+        );
+
+      color: #17130a;
+
+      font-weight: bold;
+
+      font-size: 17px;
+
+      transition: 0.25s;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-4px);
+
+      box-shadow:
+        0 15px 40px
+        rgba(255,189,24,0.25);
+    }
+
+    .secondary-btn {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 15px 30px;
+
+      border-radius: 15px;
+
+      border:
+        1px solid rgba(255,255,255,0.12);
+
+      color: #ffffff;
+
+      font-weight: bold;
+
+      transition: 0.25s;
+    }
+
+    .secondary-btn:hover {
+      border-color: #ffbd18;
+
+      color: #ffbd18;
+
+      transform: translateY(-4px);
+    }
+
+
+    /* =========================
+       FEATURES
+    ========================= */
+
+    .section {
+      max-width: 1150px;
+
+      margin: auto;
+
+      padding: 90px 25px;
+    }
+
+    .section-title {
+      text-align: center;
+
+      font-size: 38px;
+
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+
+      color: #9ca3af;
+
+      margin-bottom: 50px;
+    }
+
+    .features {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          auto-fit,
+          minmax(230px, 1fr)
+        );
+
+      gap: 20px;
+    }
+
+    .card {
+      padding: 30px;
+
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.07),
+          rgba(255,255,255,0.025)
+        );
+
+      border:
+        1px solid rgba(255,255,255,0.08);
+
+      transition: 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+
+      border-color:
+        rgba(255,189,24,0.35);
+    }
+
+    .card-icon {
+      width: 58px;
+      height: 58px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 17px;
+
+      background:
+        rgba(255,189,24,0.12);
+
+      font-size: 28px;
+
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+
+      font-size: 21px;
+    }
+
+    .card p {
+      color: #9ca3af;
+    }
+
+
+    /* =========================
+       HOW IT WORKS
+    ========================= */
+
+    .how-section {
+      padding: 100px 25px;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(255,189,24,0.10),
+          transparent 55%
+        );
+    }
+
+    .steps {
+      max-width: 1050px;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 20px;
+    }
+
+    .step {
+      text-align: center;
+
+      padding: 35px 25px;
+
+      border-radius: 22px;
+
+      background:
+        rgba(255,255,255,0.035);
+
+      border:
+        1px solid rgba(255,255,255,0.08);
+    }
+
+    .step-number {
+      width: 60px;
+      height: 60px;
+
+      margin: 0 auto 18px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ffbd18,
+          #ff8a00
+        );
+
+      color: #111;
+
+      font-weight: bold;
+
+      font-size: 20px;
+    }
+
+    .step h3 {
+      margin-bottom: 10px;
+    }
+
+    .step p {
+      color: #9ca3af;
+    }
+
+
+    /* =========================
+       DOWNLOAD
+    ========================= */
+
+    .download-section {
+      padding: 100px 25px;
+
+      text-align: center;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(255,189,24,0.13),
+          transparent 55%
+        );
+    }
+
+    .download-box {
+      max-width: 760px;
+
+      margin: auto;
+
+      padding: 60px 30px;
+
+      border-radius: 30px;
+
+      background:
+        rgba(255,255,255,0.035);
+
+      border:
+        1px solid rgba(255,189,24,0.16);
+    }
+
+    .download-box h2 {
+      font-size: 38px;
+
+      margin-bottom: 15px;
+    }
+
+    .download-box p {
+      color: #9ca3af;
+
+      margin-bottom: 30px;
+    }
+
+    .version {
+      margin-top: 18px;
+
+      color: #6b7280;
+
+      font-size: 14px;
+    }
+
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about {
+      max-width: 900px;
+
+      margin: auto;
+
+      text-align: center;
+
+      padding: 90px 25px;
+    }
+
+    .about-badge {
+      display: inline-block;
+
+      color: #ffbd18;
+
+      font-weight: bold;
+
+      margin-bottom: 10px;
+    }
+
+    .about h2 {
+      font-size: 38px;
+
+      margin-bottom: 15px;
+    }
+
+    .about p {
+      color: #9ca3af;
+
+      font-size: 17px;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      padding: 35px 20px;
+
+      text-align: center;
+
+      border-top:
+        1px solid rgba(255,255,255,0.08);
+
+      color: #6b7280;
+    }
+
+    footer strong {
+      color: #ffbd18;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 700px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: 80vh;
+
+        padding: 60px 20px;
+      }
+
+      .hero h1 {
+        font-size: 65px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .section {
+        padding: 65px 20px;
+      }
+
+      .section-title {
+        font-size: 30px;
+      }
+
+      .download-box h2 {
+        font-size: 30px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .download-btn,
+      .secondary-btn {
+        width: 100%;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </style>
 </head>
+
+
 <body>
-<header class="nav"><div class="wrap navin">
-<a class="logo" href="#home">Taxi<span>Go</span></a>
-<nav><a href="#home">سەرەکی</a><a href="#features">تایبەتمەندی</a><a href="#how">چۆن کار دەکات؟</a><a href="#about">دەربارە</a></nav>
-<a class="btn small" href="TaxiGo.apk" download>📱 دەستپێکردن</a>
-</div></header>
 
-<main>
-<section class="hero" id="home"><div class="wrap hero-grid"><div>
-<div class="tag">🚕 TaxiGo ـی نوێ</div>
-<h1>گەشتەکەت<br><span>بە TaxiGo</span> ئاسانترە</h1>
-<p>تاکسی بە خێرایی، ئاسایش و سادەیی. شوێنی خۆت و مەبەستەکەت دیاری بکە و گەشتەکەت بە ئاسانی بەڕێوەبەرە.</p>
-<div class="actions"><a class="btn" href="TaxiGo.apk" download>📱 داگرتنی ئەپ</a><a class="outline" href="#how">چۆن کار دەکات؟ ←</a></div>
-<div class="stats"><div><b>24/7</b><small>خزمەتگوزاری</small></div><div><b>⚡</b><small>خێرا</small></div><div><b>🔒</b><small>ئاسایش</small></div></div>
-</div>
-<div class="phone-area"><div class="glow"></div><div class="phone"><div class="notch"></div>
-<div class="map"><div class="route r1"></div><div class="route r2"></div><i class="pin p1">●</i><i class="pin p2">●</i><div class="car">🚕</div></div>
-<div class="driver"><span><small>نزیکترین شۆفێر</small><b>TaxiGo Driver</b></span><em>●</em></div>
-<div class="ride">داواکاری تاکسی</div></div></div>
-</div></section>
 
-<section class="section" id="features"><div class="wrap"><div class="head"><span>تایبەتمەندییەکان</span><h2>هەموو شتێک بۆ گەشتێکی باشتر</h2><p>ڕووکاری مۆدێرن و سادە بۆ passenger و driver.</p></div>
-<div class="cards">
-<article><strong>📍</strong><h3>شوێنی ورد</h3><p>شوێنی دەستپێکردن و مەبەست بە ئاسانی دیاری بکە.</p></article>
-<article><strong>🚗</strong><h3>شۆفێری نزیک</h3><p>داواکارییەکەت بگەیەنە بە شۆفێرە بەردەستەکان.</p></article>
-<article><strong>💳</strong><h3>پارەدان</h3><p>بەڕێوەبردنی نرخ و زانیارییەکانی گەشت بە شێوەی ڕێکخراو.</p></article>
-<article><strong>🛡️</strong><h3>ئاسایش</h3><p>زانیارییەکانی بەکارهێنەر و گەشت بە شێوەی پارێزراو.</p></article>
-</div></div></section>
+  <!-- =========================
+       NAVBAR
+  ========================= -->
 
-<section class="section dark" id="how"><div class="wrap"><div class="head"><span>چۆن کار دەکات؟</span><h2>لە سێ هەنگاوی سادەدا</h2></div>
-<div class="steps"><div><b>01</b><h3>داواکاری بکە</h3><p>شوێنی خۆت و شوێنی گەیشتن هەڵبژێرە.</p></div><i></i><div><b>02</b><h3>شۆفێر هەڵبژێرە</h3><p>زانیاری گەشت و شۆفێرەکە ببینە.</p></div><i></i><div><b>03</b><h3>گەشتەکەت دەست پێبکە</h3><p>بە ئارامی بڕۆ بۆ مەبەستەکەت.</p></div></div>
-</div></section>
+  <nav>
 
-<section class="section" id="download"><div class="wrap download">
-<div><span>TaxiGo</span><h2>ئامادەیت بۆ گەشت؟</h2><p>ئەپەکە بەکاربهێنە بۆ داواکاری تاکسی و بەڕێوەبردنی گەشتەکانت.</p></div>
-<div class="stores"><a href="TaxiGo.apk" download><b>🤖</b><span><small>دابەزاندنی ڕاستەوخۆ</small>TaxiGo APK</span></a><a href="#download"><b>●</b><span><small>بەم زووانە لە</small>App Store</span></a></div>
-</div></section>
+    <div class="nav-container">
 
-<section class="section" id="about"><div class="wrap about"><div><span>دەربارەی TaxiGo</span><h2>تەکنەلۆجیا بۆ گەشتێکی ئاسانتر</h2></div><p>TaxiGo پلاتفۆرمێکی نوێی گەیاندنی تاکسییە کە ئامانجی دروستکردنی ئەزموونێکی خێرا، سادە و مۆدێرنە بۆ passenger و driver.</p></div></section>
-</main>
+      <a href="#home" class="logo">
 
-<footer><div class="wrap foot"><div class="logo">Taxi<span>Go</span></div><p>© 2026 TaxiGo — هەموو مافەکان پارێزراون.</p></div></footer>
-</body></html>
+        <span class="logo-icon">
+          🚕
+        </span>
+
+        TaxiGo
+
+      </a>
+
+
+      <div class="nav-links">
+
+        <a href="#home">
+          سەرەتا
+        </a>
+
+        <a href="#features">
+          تایبەتمەندییەکان
+        </a>
+
+        <a href="#how">
+          چۆن کار دەکات؟
+        </a>
+
+        <a href="#download">
+          دابەزاندن
+        </a>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <section
+    class="hero"
+    id="home"
+  >
+
+    <div class="hero-content">
+
+
+      <div class="badge">
+        🚕 TaxiGo
+      </div>
+
+
+      <h1>
+        TaxiGo
+      </h1>
+
+
+      <h2>
+        گەشتەکەت بە TaxiGo ئاسانترە
+      </h2>
+
+
+      <p>
+
+        TaxiGo ئەپی زیرەکی تاکسییە
+        بۆ داواکاری گەشت، دۆزینەوەی
+        شۆفێری نزیک و بەڕێوەبردنی
+        گەشتەکانت بە شێوەیەکی خێرا
+        و سادە.
+
+      </p>
+
+
+      <div class="buttons">
+
+
+        <!-- APK DOWNLOAD -->
+
+        <a
+          href="TaxiGo.apk"
+          class="download-btn"
+          download="TaxiGo.apk"
+        >
+          📱 دابەزاندنی TaxiGo
+        </a>
+
+
+        <a
+          href="#features"
+          class="secondary-btn"
+        >
+          ✨ بینینی تایبەتمەندییەکان
+        </a>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================
+       FEATURES
+  ========================= -->
+
+  <section
+    class="section"
+    id="features"
+  >
+
+    <h2 class="section-title">
+      تایبەتمەندییەکان
+    </h2>
+
+    <p class="section-subtitle">
+      هەموو شتێک بۆ گەشتێکی خێرا و ئاسان
+    </p>
+
+
+    <div class="features">
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          📍
+        </div>
+
+        <h3>
+          شوێنی ورد
+        </h3>
+
+        <p>
+          شوێنی دەستپێکردن و مەبەستەکەت
+          بە ئاسانی دیاری بکە.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          🚕
+        </div>
+
+        <h3>
+          شۆفێری نزیک
+        </h3>
+
+        <p>
+          داواکاری گەشتەکەت بگەیەنە
+          بە شۆفێرە بەردەستەکان.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          🗺️
+        </div>
+
+        <h3>
+          بەدواداچوونی گەشت
+        </h3>
+
+        <p>
+          زانیارییەکانی گەشتەکەت
+          بە شێوەی ڕێکخراو ببینە.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          💳
+        </div>
+
+        <h3>
+          پارەدان
+        </h3>
+
+        <p>
+          زانیارییەکانی نرخ و
+          پارەدانی گەشتەکان بەڕێوە ببە.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          👤
+        </div>
+
+        <h3>
+          هەژماری بەکارهێنەر
+        </h3>
+
+        <p>
+          هەژماری تایبەتی خۆت دروست بکە
+          و گەشتەکانت بەڕێوە ببە.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          🚗
+        </div>
+
+        <h3>
+          بۆ شۆفێر
+        </h3>
+
+        <p>
+          شۆفێرەکان دەتوانن داواکارییەکان
+          ببینن و گەشتەکان بەڕێوە ببەن.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          🛡️
+        </div>
+
+        <h3>
+          ئاسایش
+        </h3>
+
+        <p>
+          زانیارییەکانی بەکارهێنەر و
+          گەشتەکان بە شێوەی پارێزراو.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          🌙
+        </div>
+
+        <h3>
+          ڕووکاری مۆدێرن
+        </h3>
+
+        <p>
+          دیزاینێکی سادە و مۆدێرن
+          بۆ ئەزموونی باشتر.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================
+       HOW IT WORKS
+  ========================= -->
+
+  <section
+    class="how-section"
+    id="how"
+  >
+
+    <h2 class="section-title">
+      چۆن کار دەکات؟
+    </h2>
+
+    <p class="section-subtitle">
+      لە سێ هەنگاوی سادەدا گەشتەکەت بکە
+    </p>
+
+
+    <div class="steps">
+
+
+      <div class="step">
+
+        <div class="step-number">
+          01
+        </div>
+
+        <h3>
+          شوێنەکەت دیاری بکە
+        </h3>
+
+        <p>
+          شوێنی دەستپێکردن و مەبەستی
+          گەشتەکەت هەڵبژێرە.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">
+          02
+        </div>
+
+        <h3>
+          داواکاری تاکسی بکە
+        </h3>
+
+        <p>
+          داواکارییەکەت بنێرە و
+          چاوەڕێی شۆفێر بکە.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">
+          03
+        </div>
+
+        <h3>
+          گەشتەکەت دەست پێبکە
+        </h3>
+
+        <p>
+          شۆفێرەکە وەردەگرێت و
+          بە ئارامی بڕۆ بۆ مەبەستەکەت.
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================
+       ABOUT
+  ========================= -->
+
+  <section class="about">
+
+    <div class="about-badge">
+      🚕 دەربارەی TaxiGo
+    </div>
+
+    <h2>
+      تەکنەلۆجیا بۆ گەشتێکی ئاسانتر
+    </h2>
+
+    <p>
+      TaxiGo پلاتفۆرمێکی مۆدێرنە
+      کە ئامانجی ئەوەیە داواکاری تاکسی،
+      بەڕێوەبردنی گەشت و پەیوەندی
+      نێوان passenger و driver
+      ئاسانتر و ڕێکخراوتر بکات.
+    </p>
+
+  </section>
+
+
+
+  <!-- =========================
+       DOWNLOAD
+  ========================= -->
+
+  <section
+    class="download-section"
+    id="download"
+  >
+
+    <div class="download-box">
+
+
+      <h2>
+        TaxiGo دابەزێنە 🚀
+      </h2>
+
+
+      <p>
+        وەشانی نوێی TaxiGo دابەزێنە
+        و گەشتەکانت بە شێوەیەکی
+        خێرا و ئاسان بەڕێوە ببە.
+      </p>
+
+
+      <a
+        href="TaxiGo.apk"
+        class="download-btn"
+        download="TaxiGo.apk"
+      >
+        ⬇️ Download TaxiGo APK
+      </a>
+
+
+      <div class="version">
+        TaxiGo — Android APK
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <p>
+
+      © 2026
+
+      <strong>
+        TaxiGo
+      </strong>
+
+      — هەموو مافەکان پارێزراون.
+
+    </p>
+
+  </footer>
+
+
+</body>
+
+</html>
