@@ -1,286 +1,1020 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ku" dir="rtl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="TaxiGo - گەشتێکی خێرا و ئاسان">
+
   <title>TaxiGo | تاکسی</title>
 
+  <meta
+    name="description"
+    content="TaxiGo - ئەپی تاکسی بۆ گەشتێکی خێرا، ئاسان و مۆدێرن"
+  >
+
   <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{font-family:Tahoma,Arial,sans-serif;background:#050807;color:#fff;line-height:1.8}
-    a{text-decoration:none;color:inherit}
 
-    nav{
-      position:sticky;top:0;z-index:1000;
-      background:rgba(5,8,7,.9);
-      backdrop-filter:blur(15px);
-      border-bottom:1px solid rgba(255,255,255,.08)
-    }
-    .nav-container{
-      max-width:1150px;margin:auto;padding:16px 25px;
-      display:flex;align-items:center;justify-content:space-between
-    }
-    .logo{display:flex;align-items:center;gap:10px;font-size:25px;font-weight:bold;color:#ffbd18}
-    .logo-icon{
-      width:43px;height:43px;display:flex;align-items:center;justify-content:center;
-      border-radius:14px;background:linear-gradient(135deg,#ffbd18,#f59e0b);
-      color:#17130a;font-size:22px;font-weight:bold
-    }
-    .nav-links{display:flex;gap:25px;color:#d1d5db}
-    .nav-links a{transition:.2s}
-    .nav-links a:hover{color:#ffbd18}
-
-    .hero{
-      min-height:88vh;display:flex;align-items:center;justify-content:center;
-      text-align:center;padding:80px 20px;
-      background:radial-gradient(circle at 50% 20%,rgba(255,189,24,.20),transparent 40%)
-    }
-    .hero-content{max-width:850px}
-    .badge{
-      display:inline-block;padding:7px 18px;margin-bottom:25px;border-radius:50px;
-      color:#ffe08a;background:rgba(255,189,24,.10);
-      border:1px solid rgba(255,189,24,.25)
-    }
-    .hero h1{
-      font-size:clamp(55px,9vw,100px);line-height:1;margin-bottom:20px;
-      background:linear-gradient(135deg,#fff,#ffbd18,#f59e0b);
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent
-    }
-    .hero h2{font-size:clamp(22px,4vw,35px);margin-bottom:20px}
-    .hero p{max-width:700px;margin:auto;color:#9ca3af;font-size:18px}
-
-    .buttons{margin-top:35px;display:flex;justify-content:center;gap:15px;flex-wrap:wrap}
-    .download-btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      padding:15px 30px;border-radius:15px;
-      background:linear-gradient(135deg,#ffbd18,#f59e0b);
-      color:#17130a;font-weight:bold;font-size:17px;transition:.25s
-    }
-    .download-btn:hover{transform:translateY(-4px);box-shadow:0 15px 40px rgba(255,189,24,.25)}
-    .secondary-btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:15px 30px;border-radius:15px;
-      border:1px solid rgba(255,255,255,.12);color:#fff
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .section{max-width:1150px;margin:auto;padding:90px 25px}
-    .section-title{text-align:center;font-size:38px;margin-bottom:10px}
-    .section-subtitle{text-align:center;color:#9ca3af;margin-bottom:50px}
-    .features{
-      display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px
+    html {
+      scroll-behavior: smooth;
     }
-    .card{
-      padding:30px;border-radius:22px;
-      background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025));
-      border:1px solid rgba(255,255,255,.08);transition:.25s
-    }
-    .card:hover{transform:translateY(-7px);border-color:rgba(255,189,24,.35)}
-    .card-icon{
-      width:58px;height:58px;display:flex;align-items:center;justify-content:center;
-      border-radius:17px;background:rgba(255,189,24,.12);
-      font-size:28px;margin-bottom:18px
-    }
-    .card h3{margin-bottom:10px;font-size:21px}
-    .card p{color:#9ca3af}
 
-    .how{
-      padding:100px 25px;
-      background:radial-gradient(circle at center,rgba(255,189,24,.11),transparent 55%)
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      background: #050608;
+      color: #ffffff;
+      line-height: 1.8;
     }
-    .how-box{max-width:1150px;margin:auto;text-align:center}
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .step{
-      padding:30px;border-radius:22px;background:rgba(255,255,255,.035);
-      border:1px solid rgba(255,255,255,.08)
-    }
-    .step-number{
-      width:58px;height:58px;margin:0 auto 15px;border-radius:50%;
-      display:flex;align-items:center;justify-content:center;
-      background:#ffbd18;color:#17130a;font-weight:bold;font-size:18px
-    }
-    .step p{color:#9ca3af}
 
-    .download-section{
-      padding:100px 25px;text-align:center;
-      background:radial-gradient(circle at center,rgba(255,189,24,.13),transparent 55%)
+    a {
+      text-decoration: none;
+      color: inherit;
     }
-    .download-box{
-      max-width:760px;margin:auto;padding:60px 30px;border-radius:30px;
-      background:rgba(255,255,255,.035);border:1px solid rgba(255,189,24,.18)
-    }
-    .download-box h2{font-size:38px;margin-bottom:15px}
-    .download-box p{color:#9ca3af;margin-bottom:30px}
-    .version{margin-top:18px;color:#6b7280;font-size:14px}
 
-    footer{
-      padding:35px 20px;text-align:center;
-      border-top:1px solid rgba(255,255,255,.08);color:#6b7280
-    }
-    footer strong{color:#ffbd18}
+    /* =========================
+       NAVBAR
+    ========================= */
 
-    @media(max-width:700px){
-      .nav-links{display:none}
-      .hero{min-height:80vh;padding:60px 20px}
-      .hero h1{font-size:65px}
-      .hero p{font-size:16px}
-      .section{padding:65px 20px}
-      .section-title{font-size:30px}
-      .download-box h2{font-size:30px}
-      .buttons{flex-direction:column}
-      .steps{grid-template-columns:1fr}
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      background: rgba(5, 6, 8, 0.90);
+
+      backdrop-filter: blur(15px);
+
+      border-bottom:
+        1px solid rgba(255,255,255,0.08);
     }
+
+    .nav-container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 16px 25px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      font-size: 25px;
+      font-weight: bold;
+
+      color: #ffbd18;
+    }
+
+    .logo-icon {
+      width: 43px;
+      height: 43px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ffbd18,
+          #f59e0b
+        );
+
+      color: #111;
+      font-size: 22px;
+      font-weight: bold;
+
+      box-shadow:
+        0 10px 30px rgba(255,189,24,0.18);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+
+      color: #d1d5db;
+    }
+
+    .nav-links a {
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #ffbd18;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 88vh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      padding: 80px 20px;
+
+      background:
+        radial-gradient(
+          circle at 50% 20%,
+          rgba(255,189,24,0.18),
+          transparent 40%
+        );
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .badge {
+      display: inline-block;
+
+      padding: 7px 18px;
+      margin-bottom: 25px;
+
+      border-radius: 50px;
+
+      color: #ffd76a;
+
+      background:
+        rgba(255,189,24,0.08);
+
+      border:
+        1px solid rgba(255,189,24,0.25);
+    }
+
+    .hero h1 {
+      font-size: clamp(55px, 9vw, 100px);
+
+      line-height: 1;
+
+      margin-bottom: 20px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ffffff,
+          #ffbd18,
+          #f59e0b
+        );
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero h2 {
+      font-size: clamp(22px, 4vw, 35px);
+
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 700px;
+
+      margin: auto;
+
+      color: #9ca3af;
+
+      font-size: 18px;
+    }
+
+    /* =========================
+       BUTTONS
+    ========================= */
+
+    .buttons {
+      margin-top: 35px;
+
+      display: flex;
+
+      justify-content: center;
+
+      gap: 15px;
+
+      flex-wrap: wrap;
+    }
+
+    .download-btn {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 10px;
+
+      padding: 15px 30px;
+
+      border-radius: 15px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ffbd18,
+          #f59e0b
+        );
+
+      color: #17130a;
+
+      font-weight: bold;
+
+      font-size: 17px;
+
+      transition: 0.25s;
+
+      box-shadow:
+        0 10px 30px
+        rgba(255,189,24,0.12);
+    }
+
+    .download-btn:hover {
+      transform: translateY(-4px);
+
+      box-shadow:
+        0 15px 40px
+        rgba(255,189,24,0.25);
+    }
+
+    .secondary-btn {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 15px 28px;
+
+      border-radius: 15px;
+
+      border:
+        1px solid rgba(255,255,255,0.10);
+
+      background:
+        rgba(255,255,255,0.035);
+
+      color: #ffffff;
+
+      transition: 0.25s;
+    }
+
+    .secondary-btn:hover {
+      transform: translateY(-4px);
+
+      border-color:
+        rgba(255,189,24,0.35);
+
+      color: #ffbd18;
+    }
+
+    /* =========================
+       FEATURES
+    ========================= */
+
+    .section {
+      max-width: 1150px;
+
+      margin: auto;
+
+      padding: 90px 25px;
+    }
+
+    .section-title {
+      text-align: center;
+
+      font-size: 38px;
+
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+
+      color: #9ca3af;
+
+      margin-bottom: 50px;
+    }
+
+    .features {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          auto-fit,
+          minmax(230px, 1fr)
+        );
+
+      gap: 20px;
+    }
+
+    .card {
+      padding: 30px;
+
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.07),
+          rgba(255,255,255,0.025)
+        );
+
+      border:
+        1px solid rgba(255,255,255,0.08);
+
+      transition: 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+
+      border-color:
+        rgba(255,189,24,0.35);
+
+      box-shadow:
+        0 15px 40px
+        rgba(0,0,0,0.25);
+    }
+
+    .card-icon {
+      width: 58px;
+      height: 58px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 17px;
+
+      background:
+        rgba(255,189,24,0.12);
+
+      font-size: 28px;
+
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+
+      font-size: 21px;
+    }
+
+    .card p {
+      color: #9ca3af;
+    }
+
+    /* =========================
+       HOW IT WORKS
+    ========================= */
+
+    .how-section {
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(255,189,24,0.08),
+          transparent 55%
+        );
+    }
+
+    .steps {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          auto-fit,
+          minmax(220px, 1fr)
+        );
+
+      gap: 20px;
+    }
+
+    .step {
+      text-align: center;
+
+      padding: 30px;
+
+      border-radius: 22px;
+
+      background:
+        rgba(255,255,255,0.025);
+
+      border:
+        1px solid rgba(255,255,255,0.08);
+    }
+
+    .step-number {
+      width: 62px;
+      height: 62px;
+
+      margin:
+        0 auto 18px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ffbd18,
+          #f59e0b
+        );
+
+      color: #17130a;
+
+      font-size: 20px;
+
+      font-weight: bold;
+    }
+
+    .step h3 {
+      margin-bottom: 10px;
+    }
+
+    .step p {
+      color: #9ca3af;
+    }
+
+    /* =========================
+       DOWNLOAD SECTION
+    ========================= */
+
+    .download-section {
+      padding: 100px 25px;
+
+      text-align: center;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(255,189,24,0.13),
+          transparent 55%
+        );
+    }
+
+    .download-box {
+      max-width: 760px;
+
+      margin: auto;
+
+      padding: 60px 30px;
+
+      border-radius: 30px;
+
+      background:
+        rgba(255,255,255,0.035);
+
+      border:
+        1px solid rgba(255,189,24,0.18);
+    }
+
+    .download-box h2 {
+      font-size: 38px;
+
+      margin-bottom: 15px;
+    }
+
+    .download-box p {
+      color: #9ca3af;
+
+      margin-bottom: 30px;
+    }
+
+    .version {
+      margin-top: 18px;
+
+      color: #6b7280;
+
+      font-size: 14px;
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about {
+      text-align: center;
+
+      max-width: 800px;
+    }
+
+    .about h2 {
+      font-size: 38px;
+
+      margin-bottom: 20px;
+    }
+
+    .about p {
+      color: #9ca3af;
+
+      font-size: 17px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      padding: 35px 20px;
+
+      text-align: center;
+
+      border-top:
+        1px solid rgba(255,255,255,0.08);
+
+      color: #6b7280;
+    }
+
+    footer strong {
+      color: #ffbd18;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 700px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: 80vh;
+
+        padding: 60px 20px;
+      }
+
+      .hero h1 {
+        font-size: 65px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .section {
+        padding: 65px 20px;
+      }
+
+      .section-title {
+        font-size: 30px;
+      }
+
+      .download-box h2 {
+        font-size: 30px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .download-btn,
+      .secondary-btn {
+        width: 100%;
+      }
+    }
+
   </style>
 </head>
 
+
 <body>
 
-<nav>
-  <div class="nav-container">
-    <a href="#home" class="logo">
-      <span class="logo-icon">🚕</span>
-      TaxiGo
-    </a>
+  <!-- =========================
+       NAVBAR
+  ========================= -->
 
-    <div class="nav-links">
-      <a href="#home">سەرەتا</a>
-      <a href="#features">تایبەتمەندییەکان</a>
-      <a href="#how">چۆن کار دەکات؟</a>
-      <a href="#download">دابەزاندن</a>
+  <nav>
+
+    <div class="nav-container">
+
+      <a href="#home" class="logo">
+
+        <span class="logo-icon">
+          🚕
+        </span>
+
+        TaxiGo
+
+      </a>
+
+
+      <div class="nav-links">
+
+        <a href="#home">
+          سەرەتا
+        </a>
+
+        <a href="#features">
+          تایبەتمەندییەکان
+        </a>
+
+        <a href="#how">
+          چۆن کار دەکات؟
+        </a>
+
+        <a href="#download">
+          دابەزاندن
+        </a>
+
+      </div>
+
     </div>
-  </div>
-</nav>
 
-<section class="hero" id="home">
-  <div class="hero-content">
+  </nav>
 
-    <div class="badge">🚕 TaxiGo ـی نوێ</div>
 
-    <h1>TaxiGo</h1>
+  <!-- =========================
+       HERO
+  ========================= -->
 
-    <h2>گەشتەکەت بە TaxiGo ئاسانترە</h2>
+  <section
+    class="hero"
+    id="home"
+  >
 
-    <p>
-      تاکسی بە خێرایی، ئاسایش و سادەیی.
-      شوێنی خۆت و مەبەستەکەت دیاری بکە و
-      گەشتەکەت بە ئاسانی بەڕێوەبەرە.
+    <div class="hero-content">
+
+      <div class="badge">
+        🚕 TaxiGo
+      </div>
+
+
+      <h1>
+        TaxiGo
+      </h1>
+
+
+      <h2>
+        ئامادەیت بۆ گەشت؟
+      </h2>
+
+
+      <p>
+        TaxiGo یارمەتیت دەدات
+        بە خێرایی و ئاسانی
+        تاکسی داوا بکەیت و
+        گەشتەکانت بەڕێوە ببەیت.
+      </p>
+
+
+      <div class="buttons">
+
+        <!-- APK DOWNLOAD -->
+
+        <a
+          href="https://github.com/varo773/YOUR-REPOSITORY/releases/download/v1.0.0/taxigo.apk"
+          class="download-btn"
+          download
+        >
+          📱 دابەزاندنی TaxiGo APK
+        </a>
+
+
+        <a
+          href="#features"
+          class="secondary-btn"
+        >
+          بینینی تایبەتمەندییەکان
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FEATURES
+  ========================= -->
+
+  <section
+    class="section"
+    id="features"
+  >
+
+    <h2 class="section-title">
+      تایبەتمەندییەکان
+    </h2>
+
+    <p class="section-subtitle">
+      هەموو شتێک بۆ گەشتێکی خێرا و ئاسان
     </p>
 
-    <div class="buttons">
-      <a href="TaxiGo.apk" class="download-btn" download="TaxiGo.apk">
-        📱 دابەزاندنی TaxiGo APK
-      </a>
 
-      <a href="#features" class="secondary-btn">
-        تایبەتمەندییەکان ←
-      </a>
+    <div class="features">
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          📍
+        </div>
+
+        <h3>
+          شوێنی ورد
+        </h3>
+
+        <p>
+          شوێنی دەستپێکردن و
+          شوێنی گەیشتن بە ئاسانی
+          دیاری بکە.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          🚗
+        </div>
+
+        <h3>
+          شۆفێر
+        </h3>
+
+        <p>
+          داواکاری گەشتەکەت
+          بگەیەنە بە شۆفێرە
+          بەردەستەکان.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          💰
+        </div>
+
+        <h3>
+          نرخ
+        </h3>
+
+        <p>
+          زانیاری نرخ و وردەکاری
+          گەشتەکەت بە ڕوونی ببینە.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          🛡️
+        </div>
+
+        <h3>
+          ئاسایش
+        </h3>
+
+        <p>
+          زانیارییەکانی بەکارهێنەر
+          و گەشت بە شێوەی پارێزراو
+          بەڕێوە دەبرێن.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          📱
+        </div>
+
+        <h3>
+          بۆ مۆبایل
+        </h3>
+
+        <p>
+          TaxiGo بۆ ئەندرۆید
+          بە شێوەیەکی خێرا و
+          سادە بەکاربهێنە.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          ⚡
+        </div>
+
+        <h3>
+          خێرا
+        </h3>
+
+        <p>
+          داواکاری تاکسی بە
+          چەند هەنگاوێکی سادە
+          ئەنجام بدە.
+        </p>
+
+      </div>
+
+
     </div>
 
-  </div>
-</section>
+  </section>
 
-<section class="section" id="features">
-  <h2 class="section-title">تایبەتمەندییەکان</h2>
-  <p class="section-subtitle">هەموو شتێک بۆ گەشتێکی باشتر</p>
 
-  <div class="features">
+  <!-- =========================
+       HOW IT WORKS
+  ========================= -->
 
-    <div class="card">
-      <div class="card-icon">📍</div>
-      <h3>شوێنی ورد</h3>
-      <p>شوێنی دەستپێکردن و مەبەست بە ئاسانی دیاری بکە.</p>
-    </div>
+  <section
+    class="section how-section"
+    id="how"
+  >
 
-    <div class="card">
-      <div class="card-icon">🚗</div>
-      <h3>شۆفێری نزیک</h3>
-      <p>داواکارییەکەت بگەیەنە بە شۆفێرە بەردەستەکان.</p>
-    </div>
+    <h2 class="section-title">
+      چۆن کار دەکات؟
+    </h2>
 
-    <div class="card">
-      <div class="card-icon">💳</div>
-      <h3>پارەدان</h3>
-      <p>زانیارییەکانی گەشت و نرخ بە شێوەیەکی ڕێکخراو ببینە.</p>
-    </div>
+    <p class="section-subtitle">
+      تەنها سێ هەنگاوی سادە
+    </p>
 
-    <div class="card">
-      <div class="card-icon">🛡️</div>
-      <h3>ئاسایش</h3>
-      <p>زانیارییەکانی بەکارهێنەر و گەشت بە شێوەی پارێزراو بەڕێوە ببە.</p>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">👤</div>
-      <h3>Passenger و Driver</h3>
-      <p>ڕووکاری تایبەت بۆ بەکارهێنەر و شۆفێر.</p>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">⚡</div>
-      <h3>خێرا و سادە</h3>
-      <p>داواکاری گەشت بە چەند هەنگاوێکی سادە.</p>
-    </div>
-
-  </div>
-</section>
-
-<section class="how" id="how">
-  <div class="how-box">
-    <h2 class="section-title">چۆن کار دەکات؟</h2>
-    <p class="section-subtitle">لە سێ هەنگاوی سادەدا</p>
 
     <div class="steps">
 
-      <div class="step">
-        <div class="step-number">01</div>
-        <h3>داواکاری بکە</h3>
-        <p>شوێنی خۆت و شوێنی گەیشتن هەڵبژێرە.</p>
-      </div>
 
       <div class="step">
-        <div class="step-number">02</div>
-        <h3>شۆفێر وەردەگرە</h3>
-        <p>داواکارییەکەت بگەیەنە بە شۆفێر و زانیاری گەشت ببینە.</p>
+
+        <div class="step-number">
+          01
+        </div>
+
+        <h3>
+          شوێنەکەت دیاری بکە
+        </h3>
+
+        <p>
+          شوێنی دەستپێکردن و
+          مەبەستەکەت هەڵبژێرە.
+        </p>
+
       </div>
 
+
       <div class="step">
-        <div class="step-number">03</div>
-        <h3>گەشتەکەت دەست پێبکە</h3>
-        <p>بە ئارامی بڕۆ بۆ مەبەستەکەت.</p>
+
+        <div class="step-number">
+          02
+        </div>
+
+        <h3>
+          تاکسی داوا بکە
+        </h3>
+
+        <p>
+          داواکارییەکەت بنێرە
+          بۆ شۆفێرەکان.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">
+          03
+        </div>
+
+        <h3>
+          گەشتەکەت دەست پێبکە
+        </h3>
+
+        <p>
+          شۆفێرەکە وەردەگرێت
+          و بەرەو مەبەستەکەت دەڕۆیت.
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       DOWNLOAD
+  ========================= -->
+
+  <section
+    class="download-section"
+    id="download"
+  >
+
+    <div class="download-box">
+
+      <div class="badge">
+        🚀 TaxiGo Android
+      </div>
+
+
+      <h2>
+        TaxiGo دابەزێنە 🚕
+      </h2>
+
+
+      <p>
+        وەشانی نوێی TaxiGo بۆ
+        ئەندرۆید دابەزێنە و
+        گەشتەکانت بە ئاسانی
+        بەڕێوە ببە.
+      </p>
+
+
+      <!-- DIRECT APK DOWNLOAD -->
+
+      <a
+        href="https://github.com/varo773/YOUR-REPOSITORY/releases/download/v1.0.0/taxigo.apk"
+        class="download-btn"
+        download
+      >
+        ⬇️ دابەزاندنی TaxiGo APK
+      </a>
+
+
+      <div class="version">
+        TaxiGo — v1.0.0
       </div>
 
     </div>
-  </div>
-</section>
 
-<section class="download-section" id="download">
-  <div class="download-box">
+  </section>
 
-    <h2>TaxiGo دابەزێنە 🚀</h2>
+
+  <!-- =========================
+       ABOUT
+  ========================= -->
+
+  <section class="section">
+
+    <div class="about">
+
+      <div class="badge">
+        دەربارەی TaxiGo
+      </div>
+
+      <h2>
+        تەکنەلۆجیا بۆ گەشتێکی ئاسانتر
+      </h2>
+
+      <p>
+        TaxiGo پلاتفۆرمێکی مۆدێرنە
+        بۆ بەڕێوەبردنی داواکارییەکانی
+        تاکسی، گەشت و پەیوەندی نێوان
+        passenger و driver.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
 
     <p>
-      وەشانی نوێی TaxiGo دابەزێنە و
-      گەشتەکانت بە ئاسانی بەڕێوە ببە.
+      © 2026
+      <strong>TaxiGo</strong>
+      —
+      هەموو مافەکان پارێزراون.
     </p>
 
-    <a href="TaxiGo.apk" class="download-btn" download="TaxiGo.apk">
-      ⬇️ Download TaxiGo APK
-    </a>
+  </footer>
 
-    <div class="version">
-      TaxiGo — Android APK
-    </div>
-
-  </div>
-</section>
-
-<footer>
-  <p>
-    © 2026 <strong>TaxiGo</strong>
-    — هەموو مافەکان پارێزراون.
-  </p>
-</footer>
 
 </body>
+
 </html>
